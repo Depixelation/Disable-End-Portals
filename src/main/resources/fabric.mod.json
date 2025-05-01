@@ -3,9 +3,9 @@
 	"id": "disable-end-portals",
 	"version": "${version}",
 	"name": "Disable End Portals",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Selectively disable progression stages to getting to the end, all via gamerules",
 	"authors": [
-		"Me!"
+		"Depixelation"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -24,7 +24,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",
-		"minecraft": "~1.21.1",
+		"minecraft": ">=1.19.4",
 		"java": ">=21",
 		"fabric-api": "*"
 	},

@@ -4,9 +4,8 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import depixelation.disableend.DisableEndPortals;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.EnderEyeItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -34,7 +33,7 @@ public class DisableEyeSeekingMixin {
     }
 
     @Inject(method = "use", at = @At("HEAD"))
-    public void captureVariables(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir){
+    public void captureVariables(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<ActionResult> cir){
         this.player = user;
         this.world = world;
     }
