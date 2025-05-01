@@ -20,10 +20,7 @@
 		]
 	},
 	"mixins": [
-		{
-			"config": "disable-end-portals.mixins.json",
-			"environment": "server"
-		}
+		"disable-end-portals.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.14",

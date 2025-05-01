@@ -3,7 +3,9 @@
 	"package": "depixelation.disableend.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"DisableCollisionMixin",
+		"DisableFrameFillingMixin",
+		"DisableEyeSeekingMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
