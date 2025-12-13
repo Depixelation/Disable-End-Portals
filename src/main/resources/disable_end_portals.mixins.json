@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "com.example.disableendportals.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "EyeSeekingMixin",
+    "FrameBlockMixin",
+    "PortalCollisionMixin"
+  ],
+  "client": [
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
