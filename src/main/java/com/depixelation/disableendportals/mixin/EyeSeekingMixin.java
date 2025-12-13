@@ -1,6 +1,6 @@
-package com.example.disableendportals.mixin;
+package com.depixelation.disableendportals.mixin;
 
-import com.example.disableendportals.DisableEndPortals;
+import com.depixelation.disableendportals.DisableEndPortals;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

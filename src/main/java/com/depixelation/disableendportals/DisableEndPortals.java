@@ -1,14 +1,9 @@
-package com.example.disableendportals;
+package com.depixelation.disableendportals;
 
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.gamerules.GameRule;
 import net.minecraft.world.level.gamerules.GameRuleCategory;
 import net.minecraft.world.level.gamerules.GameRules;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import org.slf4j.Logger;
 
@@ -18,7 +13,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(DisableEndPortals.MOD_ID)
@@ -45,14 +39,11 @@ public class DisableEndPortals {
 
     @SubscribeEvent
     public void registerGameRules(RegisterEvent event) {
-        event.register(net.minecraft.core.registries.Registries.GAME_RULE, helper -> {
+        if (event.getRegistryKey().equals(Registries.GAME_RULE)) {
+            LOGGER.debug("Registering commands");
             FRAME_FILLING = GameRules.registerBoolean(FRAME_FILLING_ID, GameRuleCategory.MISC, false);
-        });
-        event.register(net.minecraft.core.registries.Registries.GAME_RULE, helper -> {
             EYE_LOCATING = GameRules.registerBoolean(EYE_LOCATING_ID, GameRuleCategory.MISC, false);
-        });
-        event.register(net.minecraft.core.registries.Registries.GAME_RULE, helper -> {
             END_PORTAL_COLLISION = GameRules.registerBoolean(END_PORTAL_COLLISION_ID, GameRuleCategory.MISC, false);
-        });
+        }
     }
 }

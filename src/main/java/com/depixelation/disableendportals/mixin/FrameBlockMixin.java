@@ -1,12 +1,11 @@
-package com.example.disableendportals.mixin;
+package com.depixelation.disableendportals.mixin;
 
-import com.example.disableendportals.DisableEndPortals;
+import com.depixelation.disableendportals.DisableEndPortals;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.EnderEyeItem;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 

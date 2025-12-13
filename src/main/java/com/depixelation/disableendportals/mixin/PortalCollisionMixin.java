@@ -1,13 +1,12 @@
-package com.example.disableendportals.mixin;
+package com.depixelation.disableendportals.mixin;
 
-import com.example.disableendportals.DisableEndPortals;
+import com.depixelation.disableendportals.DisableEndPortals;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.EndPortalBlock;
-import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
