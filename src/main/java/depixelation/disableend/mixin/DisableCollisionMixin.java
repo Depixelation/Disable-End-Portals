@@ -6,6 +6,7 @@ import net.minecraft.block.EndPortalBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCollisionHandler;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,7 +20,7 @@ import java.util.Objects;
 public class DisableCollisionMixin {
 	@Inject(at = @At("HEAD"), method = "onEntityCollision", cancellable = true)
 	private void init(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler, boolean bl, CallbackInfo ci) {
-		if (!world.isClient() && !Objects.requireNonNull(world.getServer()).getOverworld().getGameRules().getValue(DisableEndPortals.ENABLE_PORTAL_COLLISION)) {
+		if (!world.isClient() && !((ServerWorld) world).getGameRules().getValue(DisableEndPortals.ENABLE_PORTAL_COLLISION)) {
 			ci.cancel();
 		}
 	}
