@@ -23,6 +23,6 @@ public class DisableFrameFillingMixin {
 
     //For the conditional check for if the eye should NOT be used
     public Comparable modifyCondition(Comparable original, UseOnContext context) {
-        return ((Boolean) original) || !context.getLevel().isClientSide() && ((ServerLevel) (context.getLevel())).getGameRules().get(DisableEndPortals.ENABLE_PORTAL_FILLING);
+        return ((Boolean) original) || !context.getLevel().isClientSide() && !((ServerLevel) (context.getLevel())).getGameRules().get(DisableEndPortals.ENABLE_PORTAL_FILLING);
     }
 }

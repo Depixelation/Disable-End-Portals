@@ -34,7 +34,7 @@ public class DisableEyeSeekingMixin {
             Player player,
             InteractionHand hand
     ){
-        if (!world.isClientSide() && ((ServerLevel) world).getGameRules().get(DisableEndPortals.ENABLE_EYE_SEEKING)) {
+        if (!world.isClientSide() && !((ServerLevel) world).getGameRules().get(DisableEndPortals.ENABLE_EYE_SEEKING)) {
             return player.blockPosition().offset(0, 16, 0);
         }
 
