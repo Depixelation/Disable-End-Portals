@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import depixelation.disableend.DisableEndPortals;
 import net.minecraft.item.EnderEyeItem;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,7 +25,7 @@ public class DisableFrameFillingMixin {
 
     //For the conditional check for if the eye should NOT be used
     public Comparable modifyCondition(Comparable original) {
-        return ((Boolean) original) || !context.getWorld().isClient() && !Objects.requireNonNull(context.getWorld().getServer()).getGameRules().getBoolean(DisableEndPortals.ENABLE_PORTAL_FILLING);
+        return ((Boolean) original) || !context.getWorld().isClient() && ((ServerWorld) (context.getWorld())).getGameRules().getValue(DisableEndPortals.ENABLE_PORTAL_FILLING);
     }
 
     @Inject(method = "useOnBlock", at = @At("HEAD"))

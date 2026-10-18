@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import depixelation.disableend.DisableEndPortals;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.EnderEyeItem;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -34,7 +35,7 @@ public class DisableEyeSeekingMixin {
             PlayerEntity player,
             Hand hand
     ){
-        if (!world.isClient() && !Objects.requireNonNull(world.getServer()).getGameRules().getBoolean(DisableEndPortals.ENABLE_EYE_SEEKING)) {
+        if (!world.isClient() && ((ServerWorld) world).getGameRules().getValue(DisableEndPortals.ENABLE_EYE_SEEKING)) {
             return player.getBlockPos().add(0, 16, 0);
         }
 
