@@ -24,7 +24,7 @@ public class DisableFrameFillingMixin {
 
     //For the conditional check for if the eye should NOT be used
     public Comparable modifyCondition(Comparable original) {
-        return ((Boolean) original) || !context.getWorld().isClient && !Objects.requireNonNull(context.getWorld().getServer()).getGameRules().getBoolean(DisableEndPortals.ENABLE_PORTAL_FILLING);
+        return ((Boolean) original) || !context.getWorld().isClient() && !Objects.requireNonNull(context.getWorld().getServer()).getGameRules().getBoolean(DisableEndPortals.ENABLE_PORTAL_FILLING);
     }
 
     @Inject(method = "useOnBlock", at = @At("HEAD"))

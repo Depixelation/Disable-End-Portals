@@ -18,23 +18,26 @@ import java.util.Objects;
 
 @Mixin(EnderEyeItem.class)
 public class DisableEyeSeekingMixin {
-    private PlayerEntity player;
-    private World world;
     @ModifyExpressionValue(
-            method = "use",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;locateStructure(Lnet/minecraft/registry/tag/TagKey;Lnet/minecraft/util/math/BlockPos;IZ)Lnet/minecraft/util/math/BlockPos;")
+            method = {"use"},
+            at = {
+                    @At(
+                            value = "INVOKE",
+                            target = "Lnet/minecraft/server/world/ServerWorld;locateStructure(Lnet/minecraft/registry/tag/TagKey;Lnet/minecraft/util/math/BlockPos;IZ)Lnet/minecraft/util/math/BlockPos;"
+                    ),
+            },
+            require = 1
     )
-    public BlockPos modifyEyeTarget(@Nullable BlockPos original){
-        if (!world.isClient && !Objects.requireNonNull(world.getServer()).getGameRules().getBoolean(DisableEndPortals.ENABLE_EYE_SEEKING)) {
+    public BlockPos modifyEyeTarget(
+            @Nullable BlockPos original,
+            World world,
+            PlayerEntity player,
+            Hand hand
+    ){
+        if (!world.isClient() && !Objects.requireNonNull(world.getServer()).getGameRules().getBoolean(DisableEndPortals.ENABLE_EYE_SEEKING)) {
             return player.getBlockPos().add(0, 16, 0);
         }
 
         return original;
-    }
-
-    @Inject(method = "use", at = @At("HEAD"))
-    public void captureVariables(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<ActionResult> cir){
-        this.player = user;
-        this.world = world;
     }
 }
