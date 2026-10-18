@@ -20,7 +20,7 @@ import java.util.Objects;
 public class DisableCollisionMixin {
 	@Inject(at = @At("HEAD"), method = "entityInside", cancellable = true)
 	private void init(BlockState state, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier handler, boolean bl, CallbackInfo ci) {
-		if (!world.isClientSide() && ((ServerLevel) world).getGameRules().get(DisableEndPortals.ENABLE_PORTAL_COLLISION)) {
+		if (!world.isClientSide() && !((ServerLevel) world).getGameRules().get(DisableEndPortals.ENABLE_PORTAL_COLLISION)) {
 			ci.cancel();
 		}
 	}
